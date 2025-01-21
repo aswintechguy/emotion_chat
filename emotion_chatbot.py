@@ -79,7 +79,7 @@ if prompt := st.chat_input("Enter your query"):
             st.session_state["new_video"] = get_video_base64("emotions/evil.mp4")
             st.session_state["is_new_video_playing"] = True
     st.session_state['messages'].append({"role": "assistant", "content": response})
-
+    st.rerun()
 
 # JavaScript for video playback logic
 video_html = f"""
