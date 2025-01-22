@@ -41,7 +41,7 @@ if "emotion" not in st.session_state:
     st.session_state['flag'] = 0
 
 # Create columns for layout
-col1, col2 = st.columns([0.1, 0.9])
+col1, col2 = st.columns([0.20, 0.80])
 
 # Column 1: Video
 # Column 1: Video
@@ -81,7 +81,7 @@ with col1:
     # HTML for both default and overlay videos
     # Improved video player HTML with state management
     video_html = """
-    <div style="position: relative; width: 100%; height: 300px;">
+    <div style="position: relative; width: 100%; height: 240px;">
         <video 
             id="default-video" 
             autoplay 
@@ -162,11 +162,11 @@ with col1:
         str(st.session_state['is_new_video_playing']).lower()
     )
     
-    components.html(video_html, height=300)
+    components.html(video_html, height=240)
 
 # Column 2: Chat interface
 with col2:
-    st.title('AI Chatbot')
+    st.title('Ask Glitches about tokens')
     messages_container = st.container(height=400)
 
     # Display previous messages
@@ -190,7 +190,8 @@ with col2:
                 messages_list.append({"role": message["role"], "content": message["content"]})
         
         # Get response from the model
-        with messages_container.chat_message('assistant'):
+        
+        with messages_container.chat_message('assistant', avatar='image.png'):
             client = st.session_state['model']
             stream = client.chat.completions.create(
                 model='gpt-4o-mini',
