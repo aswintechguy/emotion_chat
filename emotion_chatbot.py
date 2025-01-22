@@ -151,9 +151,7 @@ with col1:
             }}
 
             // Check if we should play overlay video
-            if ({} && !playerState.isOverlayPlaying) {{
-                playOverlayVideo();
-            }}
+            playOverlayVideo();
         </script>
     </div>
     """.format(
